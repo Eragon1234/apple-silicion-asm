@@ -5,16 +5,16 @@
 _main:
 	mov X16, #3
 	mov X0, #0
-	adrp X1, value@page
-	add X1, X1, value@pageoff
-	mov X2, #20
+	adrp X1, buffer@page
+	add X1, X1, buffer@pageoff
+	mov X2, #buffer_length
 	svc 0
 
 	mov X16, #4
 	mov X0, #1
-	adrp X1, value@page
-	add X1, X1, value@pageoff
-	mov X2, #5
+	adrp X1, buffer@page
+	add X1, X1, buffer@pageoff
+	mov X2, #buffer_length
 	svc 0
 
 	mov X16, #1
@@ -22,6 +22,8 @@ _main:
 	svc 0
 
 .data
-value:
-	.skip 20
 
+.equ buffer_length, 20
+
+buffer:
+	.skip buffer_length
