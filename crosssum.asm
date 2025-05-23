@@ -2,7 +2,7 @@
 
 .global _main
 
-atoi:
+crosssum:
   // go to end if there is no more number
   cmp X0, #48 
   b.lt end
@@ -15,7 +15,7 @@ atoi:
   lsr X0, X0, #8
 
   // loop
-  b atoi
+  b crosssum
   
 end:
   mov X0, X1
@@ -38,7 +38,7 @@ _main:
   ldr X0, [sp], #8
   
   // call atoi
-  bl atoi
+  bl crosssum
 
   // exit
   mov X16, #1
